@@ -6,8 +6,8 @@ This example demonstrates:
 - Using the agent for multi-step reasoning
 """
 
-from langchain_ollama import ChatOllama
-from terminal_agent import DeepAgent, get_default_tools
+from src.terminal_agent import DeepAgent, get_default_tools
+from src.terminal_agent.infrastructure.models import create_ollama_model
 
 
 def main():
@@ -18,16 +18,16 @@ def main():
     print()
     
     # Step 1: Create and configure the ChatOllama model explicitly
-    print("🔧 Creating ChatOllama model wrapper...")
+    print("Creating ChatOllama model wrapper...")
     try:
-        model = ChatOllama(
-            model="llama3.2",
+        model = create_ollama_model(
+            model_name="llama3.2",
             base_url="http://localhost:11434",
             temperature=0.5,  # Lower temperature for more focused responses
         )
-        print("✓ Model wrapper created")
+        print("Model wrapper created")
     except Exception as e:
-        print(f"❌ Error creating model: {e}")
+        print(f"Error creating model: {e}")
         print("\nMake sure Ollama is running:")
         print("  ollama serve")
         return
@@ -35,13 +35,13 @@ def main():
     print()
     
     # Step 2: Define tools
-    print("📦 Loading tools...")
+    print("Loading tools...")
     tools = get_default_tools()
-    print(f"✓ Loaded {len(tools)} tools")
+    print(f"Loaded {len(tools)} tools")
     print()
     
     # Step 3: Create the deep agent with custom prompt
-    print("🤖 Creating DeepAgent with custom system prompt...")
+    print("Creating DeepAgent with custom system prompt...")
     
     custom_system_prompt = """You are an advanced AI assistant specialized in mathematics and text analysis.
 When solving problems:
@@ -61,7 +61,7 @@ Available tools allow you to:
         system_prompt=custom_system_prompt,
         verbose=True,
     )
-    print("✓ DeepAgent created")
+    print("DeepAgent created")
     print()
     
     # Step 4: Use the agent for complex multi-step reasoning
@@ -78,12 +78,12 @@ Available tools allow you to:
         
         try:
             result = agent.invoke(query)
-            print(f"\n📝 Final Answer:")
+            print(f"\nFinal Answer:")
             print(result['output'])
             print()
-            print(f"💬 Total messages in conversation: {len(result['messages'])}")
+            print(f"Total messages in conversation: {len(result['messages'])}")
         except Exception as e:
-            print(f"❌ Error: {e}")
+            print(f"Error: {e}")
         
         print()
 

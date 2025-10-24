@@ -6,11 +6,11 @@ This project demonstrates how to wrap local models for use with Deep Agents, ena
 
 ## Features
 
-- 🤖 **Local Model Integration**: Use Ollama to run models locally without external API calls
-- 🛠️ **Tool Support**: Create and use custom tools with your agents
-- 🔧 **Easy Setup**: Simple API for creating and using deep agents
-- 📚 **Well Documented**: Comprehensive guides and examples
-- ⚡ **Flexible**: Support for custom prompts, multiple tools, and various models
+- **Local Model Integration**: Use Ollama to run models locally without external API calls
+- **Tool Support**: Create and use custom tools with your agents
+- **Easy Setup**: Simple API for creating and using deep agents
+- **Well Documented**: Comprehensive guides and examples
+- **Flexible**: Support for custom prompts, multiple tools, and various models
 
 ## Quick Start
 
@@ -34,7 +34,7 @@ pip install -r requirements.txt
 ### Basic Usage
 
 ```python
-from terminal_agent import create_deep_agent, get_default_tools
+from src.terminal_agent import create_deep_agent, get_default_tools
 
 # Create a deep agent with default tools
 tools = get_default_tools()
@@ -59,18 +59,26 @@ This implementation wraps local models (via Ollama) with LangChain's agent frame
 
 ```
 terminal-agent/
-├── terminal_agent/        # Main package
-│   ├── __init__.py       # Package exports
-│   ├── deep_agent.py     # Deep agent implementation
-│   └── tools.py          # Tool definitions
-├── examples/             # Example scripts
-│   ├── basic_usage.py    # Basic usage example
-│   └── custom_tools.py   # Custom tools example
-├── docs/                 # Documentation
-│   ├── SETUP.md         # Setup instructions
-│   └── USAGE.md         # Usage guide
-├── requirements.txt      # Python dependencies
-└── README.md            # This file
+├── src/                   # Source code root
+│   └── terminal_agent/    # Main package
+│       ├── core/          # Domain models and contracts
+│       ├── agents/        # Agent implementations
+│       ├── tools/         # Tool definitions
+│       └── infrastructure/# External dependencies
+├── examples/              # Example scripts
+│   ├── basic_usage.py     # Basic usage example
+│   ├── custom_tools.py    # Custom tools example
+│   └── advanced_usage.py  # Advanced usage patterns
+├── docs/                  # Documentation
+│   ├── SETUP.md           # Setup instructions
+│   ├── USAGE.md           # Usage guide
+│   └── ARCHITECTURE.md    # Architecture documentation
+├── tests/                 # Test suite
+├── .github/               # GitHub configuration
+│   └── copilot-instructions.md  # AI tooling instructions
+├── AGENTS.md              # Architecture guide
+├── requirements.txt       # Python dependencies
+└── README.md              # This file
 ```
 
 ## Documentation
@@ -107,7 +115,7 @@ def calculator(expression: str) -> str:
 ### 3. Deep Agent Creation
 
 ```python
-from terminal_agent import DeepAgent
+from src.terminal_agent import DeepAgent
 
 agent = DeepAgent(
     model=model,

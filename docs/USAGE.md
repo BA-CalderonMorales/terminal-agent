@@ -16,7 +16,7 @@ This guide provides detailed examples and best practices for using deep agents w
 The simplest way to get started:
 
 ```python
-from terminal_agent import create_deep_agent, get_default_tools
+from src.terminal_agent import create_deep_agent, get_default_tools
 
 # Create agent with default settings
 agent = create_deep_agent()
@@ -31,7 +31,7 @@ print(result['output'])
 ### Basic Creation
 
 ```python
-from terminal_agent import create_deep_agent, get_default_tools
+from src.terminal_agent import create_deep_agent, get_default_tools
 
 tools = get_default_tools()
 agent = create_deep_agent(
@@ -92,7 +92,7 @@ result = agent.invoke("How many words are in 'The quick brown fox'?")
 
 ```python
 from langchain_core.tools import tool
-from terminal_agent import create_deep_agent
+from src.terminal_agent import create_deep_agent
 
 @tool
 def get_weather(location: str) -> str:
@@ -175,7 +175,7 @@ For more control, use the `DeepAgent` class:
 
 ```python
 from langchain_ollama import ChatOllama
-from terminal_agent import DeepAgent, get_default_tools
+from src.terminal_agent import DeepAgent, get_default_tools
 
 # Create model explicitly
 model = ChatOllama(
@@ -203,7 +203,7 @@ For async operations:
 
 ```python
 import asyncio
-from terminal_agent import create_deep_agent, get_default_tools
+from src.terminal_agent import create_deep_agent, get_default_tools
 
 async def main():
     agent = create_deep_agent()

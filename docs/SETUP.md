@@ -87,7 +87,7 @@ pip install -e .
 Run a simple test to verify everything is working:
 
 ```python
-from terminal_agent import create_deep_agent, get_default_tools
+from src.terminal_agent import create_deep_agent, get_default_tools
 
 # Create agent
 tools = get_default_tools()

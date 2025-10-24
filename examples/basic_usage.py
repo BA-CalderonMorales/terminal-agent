@@ -11,7 +11,7 @@ Prerequisites:
 - A model must be pulled (e.g., `ollama pull llama3.2`)
 """
 
-from terminal_agent import create_deep_agent, get_default_tools
+from src.terminal_agent import create_deep_agent, get_default_tools
 
 
 def main():
@@ -22,13 +22,13 @@ def main():
     print()
     
     # Get default tools
-    print("📦 Loading default tools...")
+    print("Loading default tools...")
     tools = get_default_tools()
-    print(f"✓ Loaded {len(tools)} tools: {[tool.name for tool in tools]}")
+    print(f"Loaded {len(tools)} tools: {[tool.name for tool in tools]}")
     print()
     
     # Create deep agent with Ollama model
-    print("🤖 Creating deep agent with llama3.2 model...")
+    print("Creating deep agent with llama3.2 model...")
     try:
         agent = create_deep_agent(
             model_name="llama3.2",  # Make sure this model is pulled in Ollama
@@ -36,10 +36,10 @@ def main():
             temperature=0.7,
             verbose=True,
         )
-        print("✓ Deep agent created successfully!")
+        print("Deep agent created successfully!")
         print()
     except Exception as e:
-        print(f"❌ Error creating agent: {e}")
+        print(f"Error creating agent: {e}")
         print("\nMake sure Ollama is running and you have pulled the model:")
         print("  ollama pull llama3.2")
         return
@@ -58,9 +58,9 @@ def main():
         
         try:
             result = agent.invoke(query)
-            print(f"\n📝 Final Answer: {result['output']}")
+            print(f"\nFinal Answer: {result['output']}")
         except Exception as e:
-            print(f"❌ Error: {e}")
+            print(f"Error: {e}")
         
         print()
 

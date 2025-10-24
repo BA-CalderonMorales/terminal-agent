@@ -1,7 +1,7 @@
 """Tests for terminal_agent.tools module."""
 
 import pytest
-from terminal_agent.tools import (
+from src.terminal_agent.tools import (
     calculator,
     string_length,
     reverse_string,

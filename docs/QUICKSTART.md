@@ -36,7 +36,7 @@ pip install -r requirements.txt
 Create a file called `my_agent.py`:
 
 ```python
-from terminal_agent import create_deep_agent, get_default_tools
+from src.terminal_agent import create_deep_agent, get_default_tools
 
 # Create agent
 tools = get_default_tools()
@@ -61,10 +61,10 @@ You now have a working Deep Agent that can:
 
 ## Next Steps
 
-- 📖 Read the [Usage Guide](USAGE.md) for more examples
-- 🛠️ Learn to [create custom tools](USAGE.md#creating-custom-tools)
-- 🔧 Check out the [examples](../examples/) directory
-- 📚 Explore [Deep Agents documentation](https://docs.langchain.com/oss/python/deepagents/overview)
+- Read the [Usage Guide](USAGE.md) for more examples
+- Learn to [create custom tools](USAGE.md#creating-custom-tools)
+- Check out the [examples](../examples/) directory
+- Explore [Deep Agents documentation](https://docs.langchain.com/oss/python/deepagents/overview)
 
 ## Common Issues
 

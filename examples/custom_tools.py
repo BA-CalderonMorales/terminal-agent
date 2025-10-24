@@ -5,7 +5,7 @@ This example shows how to create custom tools and use them with deep agents.
 
 from typing import List
 from langchain_core.tools import tool, BaseTool
-from terminal_agent import create_deep_agent
+from src.terminal_agent import create_deep_agent
 
 
 # Define custom tools
@@ -68,11 +68,11 @@ def main():
     
     # Get custom tools
     tools = get_custom_tools()
-    print(f"📦 Loaded {len(tools)} custom tools: {[tool.name for tool in tools]}")
+    print(f"Loaded {len(tools)} custom tools: {[tool.name for tool in tools]}")
     print()
     
     # Create deep agent with custom system prompt
-    print("🤖 Creating deep agent with custom tools...")
+    print("Creating deep agent with custom tools...")
     
     custom_prompt = (
         "You are a helpful assistant that can manipulate text and provide time information. "
@@ -87,10 +87,10 @@ def main():
             temperature=0.7,
             verbose=True,
         )
-        print("✓ Deep agent created successfully!")
+        print("Deep agent created successfully!")
         print()
     except Exception as e:
-        print(f"❌ Error creating agent: {e}")
+        print(f"Error creating agent: {e}")
         print("\nMake sure Ollama is running and you have pulled the model:")
         print("  ollama pull llama3.2")
         return
@@ -109,9 +109,9 @@ def main():
         
         try:
             result = agent.invoke(query)
-            print(f"\n📝 Final Answer: {result['output']}")
+            print(f"\nFinal Answer: {result['output']}")
         except Exception as e:
-            print(f"❌ Error: {e}")
+            print(f"Error: {e}")
         
         print()
 
