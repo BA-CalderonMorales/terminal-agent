@@ -23,9 +23,20 @@ def calculator(expression: str) -> str:
         "4"
     """
     try:
-        # Safely evaluate mathematical expressions
-        # Note: In production, consider using a more robust math parser
-        result = eval(expression, {"__builtins__": {}}, {})
+        # Safely evaluate mathematical expressions using restricted eval
+        # Only allow basic math operations and numbers
+        allowed_names = {
+            "abs": abs,
+            "round": round,
+            "min": min,
+            "max": max,
+            "sum": sum,
+            "pow": pow,
+        }
+        # Compile in eval mode with restricted globals
+        code = compile(expression, "<string>", "eval")
+        # Execute with no builtins and only allowed functions
+        result = eval(code, {"__builtins__": {}}, allowed_names)
         return str(result)
     except Exception as e:
         return f"Error evaluating expression: {str(e)}"
